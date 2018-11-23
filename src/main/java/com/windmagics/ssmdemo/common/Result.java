@@ -9,7 +9,7 @@ public  class Result{
 
     private String errmsg = "";
 
-    private Object data;
+    private Object record;
 
     public int getCode() {
         return code;
@@ -27,19 +27,19 @@ public  class Result{
         this.errmsg = errmsg;
     }
 
-    public Object getData() {
-        return data;
+    public Object getRecord() {
+        return record;
     }
 
-    public void setData(Object data) {
-        this.data = data;
+    public void setRecord(Object data) {
+        this.record = data;
     }
 
     public static Result genSuccessResult(Object obj){
         Result result = new Result();
         result.code = SUCCESS;
         result.errmsg = "ok";
-        result.data = obj;
+        result.record = obj;
         return result;
     }
 
@@ -48,7 +48,7 @@ public  class Result{
         Result result = new Result();
         result.code = FAILURE;
         result.errmsg = errmsg;
-        result.data = obj;
+        result.record = obj;
         return result;
     }
 

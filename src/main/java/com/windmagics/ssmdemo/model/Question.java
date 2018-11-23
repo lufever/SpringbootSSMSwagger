@@ -2,9 +2,7 @@ package com.windmagics.ssmdemo.model;
 
 import com.alibaba.fastjson.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Question {
     private Integer id;
@@ -57,7 +55,7 @@ public class Question {
         this.content = content == null ? null : content.trim();
     }
 
-    private JSONObject genJSONObj() {
+    public  JSONObject genJSONObj() {
         try {
             JSONObject jsonObject = JSONObject.parseObject(JSONObject.toJSONString(this));
             return jsonObject;
@@ -67,12 +65,12 @@ public class Question {
         }
     }
 
-    public static List<JSONObject> genJSONList(List<Question> models)
+    public static List<JSONObject> genJSONList( List<Map< String, Object >>models)
     {
         List<JSONObject> jsonObjects = new ArrayList<>();
-        for (Question model:models)
+        for (Map< String, Object > model:models)
         {
-            JSONObject jsonObject = model.genJSONObj();
+            JSONObject jsonObject = JSONObject.parseObject(JSONObject.toJSONString(model));
             if (jsonObject != null)
                 jsonObjects.add(jsonObject);
         }

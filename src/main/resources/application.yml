@@ -15,9 +15,9 @@ server:
 #spring.datasource.username=root
 #spring.datasource.password=windmagics
 #
-## 主要是为了让框架扫描到mapper文件
+## 涓昏鏄负浜嗚妗嗘灦鎵弿鍒癿apper鏂囦欢
 #mybatis.mapper-locations=classpath*:/mapper/**Mapper.xml
-##起别名。可省略写mybatis的xml中的resultType的全路径
+##璧峰埆鍚嶃�傚彲鐪佺暐鍐檓ybatis鐨剎ml涓殑resultType鐨勫叏璺緞
 #mybatis.type-aliases-package=com.windmagics.ssmdemo.model
 
 ##Spring
@@ -50,3 +50,6 @@ spring:
 mybatis:
     mapper-locations: classpath*:/mapper/**Mapper.xml
     type-aliases-package: com.windmagics.ssmdemo.model
+#    configuration-properties:
+#      settings:
+#          callSettersOnNulls锛歵rue

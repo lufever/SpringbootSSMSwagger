@@ -16,6 +16,11 @@
   <sql id="Blob_Column_List">
     content
   </sql>
+  <select id="selectAll"  resultType="Map">select id,title  from questions</select>
+  <select id="selectPre"  parameterType="java.lang.Integer" resultType="Map">
+      select  id,title  from questions where id <![CDATA[<]]> #{id,jdbcType=INTEGER} order by id desc limit 1
+</select>
+  <select id="selectNext"  parameterType="java.lang.Integer" resultType="Map">select  id,title  from questions where id>#{id,jdbcType=INTEGER} order by id asc limit 1</select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />

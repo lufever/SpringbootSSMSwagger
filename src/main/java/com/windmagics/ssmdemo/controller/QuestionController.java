@@ -25,7 +25,7 @@ import javax.xml.ws.Response;
 @Api(tags = "测试", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 @EnableAutoConfiguration
-@RequestMapping("/question")
+@RequestMapping("/api/question")
 public class QuestionController {
     @Autowired
     private QuestionService questionService;
@@ -34,26 +34,38 @@ public class QuestionController {
 //    @Autowired
 //    QuestionMapper questionMapper;
     @ApiOperation(value = "获取用户", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiResponses(value = {@ApiResponse(code = 0, message = "ok", response = Response.class)})
+    @ApiResponses(value = {@ApiResponse(code=0,message="ok",response = Response.class)})
+
     @GetMapping("getuser")
     public int getuser() {
         return 1;
     }
 
-//    @GetMapping("getquestions")
-//    public Question getQuestions()
+    @GetMapping("getquestion")
+    public Result getQuestion(int id)
+    {
+        return questionService.getQuestion(id);
+
+    }
+//    @GetMapping("getquestion")
+//    public Result getQuestion(int id)
 //    {
-//        return questionMapper.selectByPrimaryKey(6);
+//        return questionService.getQuestion(id);
 //
-//       //return  questionMapper.selectByPrimaryKey(6);
 //    }
 
     @GetMapping("getquestions")
     public Result getQuestions() {
         return  questionService.getQuestions();
     }
-//    @GetMapping("getquestions")
-//    public Result getQuestions() {
-//        return  questionService.getQuestions();
-//        }
+
+    @GetMapping("getpre")
+    public Result getPre(int id) {
+        return  questionService.getPre(id);
+   }
+
+    @GetMapping("getnext")
+    public Result getNext(int id) {
+        return  questionService.getNext(id);
+    }
 }
